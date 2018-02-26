@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+	<!-- <meta http-equiv="X-UA-Compatible" content="ie=edge"> -->
+	<title>Converter</title>
+	<link href="./dist/index.css" rel="stylesheet">
+	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+	<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.3.0/lodash.js"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+</head>
+<body>
+	<div id="header-wrapper"><h1>XLF converter 2.0 to 1.2</h1></div>
+	<div id="main-wrapper">
+		<!-- <textarea name="left" id="left" cols="100" rows="50" placeholder="Paste your XLF 2.0 here"></textarea> -->
+		<div id="left">
+			<pre><code class="XML" contenteditable="true" placeholder="Paste your XLF 2.0 here"></code></pre>
+		</div>
+
+		<div class="button-wrapper"><button>Convert -></button></div>
+
+		<div name="right" id="right" cols="100" rows="50" readonly>
+			<pre><code class="XML"></code></pre>
+		</div>
+	</div>
+
+	<script src="./dist/bundle.js"></script>
+</body>
+</html>
