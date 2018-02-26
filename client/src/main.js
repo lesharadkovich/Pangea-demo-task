@@ -1,5 +1,4 @@
 const XmlReader = require('xml-reader');
-const reader = XmlReader.create();
 
 // require.extensions['.ejs'] = (module, filename) => {module.exports = fs.readFileSync(filename, 'utf8');};
 
@@ -19,32 +18,24 @@ const tmpl = _.template(
 );
 
 
-// let left = document.querySelector('#left pre code');
-// left.addEventListener('input', (event) => {
-//     hljs.highlightBlock(left);
-// })
-
-
 let convertButton = document.querySelector('button');
 convertButton.addEventListener('click', () => {
     let pasteArea = document.querySelector('#left pre code');
     let xml = '<?xml version="1.0"?>' + pasteArea.textContent;
-
     hljs.highlightBlock(pasteArea);
+
+    const reader = XmlReader.create();
+
+    reader.on('done', onParseDone);
     reader.parse(xml);
 })
 
-reader.on('done', data => {
-
+function onParseDone(data) {
     while(data.children[0].name != 'unit') {
         data = data.children[0];
     }
 
-    console.log(data)
-    // let convertedArea = document.getElementById('right');
-    // convertedArea.textContent = tmpl({data});
-
     let a = document.querySelector('#right pre code');
     a.textContent = tmpl({data});
     hljs.highlightBlock(a);
-});
+}
